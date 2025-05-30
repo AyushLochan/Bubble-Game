@@ -19,9 +19,7 @@ Bubble Game is an interactive web-based game where players aim to pop bubbles by
 
 ## 📸 Screenshots
 
-![Gameplay Screenshot](https://example.com/screenshot.png)
-
-*Note: Replace the above URL with an actual screenshot from your game.*
+![Gameplay Screenshot](![image](https://github.com/user-attachments/assets/0c06f528-dcbd-4669-ada4-c3793ccf75be))
 
 ## 🔧 Installation
 
