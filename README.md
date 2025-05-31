@@ -4,7 +4,7 @@
 
 Bubble Game is an interactive web-based game where players aim to pop bubbles by clicking on them. The game challenges players' reflexes and precision, providing an engaging experience suitable for all ages.
 
-### 🔗 [Live Demo](https://ayushlochan.github.io/Tic-Tac-Toe/)
+### 🔗 [Live Demo](https://ayushlochan.github.io/Bubble-Game/)
 
 ## 🛠️ Technologies Used
 
