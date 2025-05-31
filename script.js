@@ -1,51 +1,104 @@
-var timer = 60;
-var score = 0;
-var hitrn = 0;
+class BubbleGame {
+    constructor() {
+        this.timer = 60;
+        this.score = 0;
+        this.target = 0;
+        this.gameActive = true;
+        this.timerInterval = null;
 
-function getNewHit() {
-    hitrn = Math.floor(Math.random() * 10);
-    document.getElementById("hitVal").textContent = hitrn;
-}
+        this.elements = {
+            target: document.getElementById('target'),
+            timer: document.getElementById('timer'),
+            score: document.getElementById('score'),
+            gameArea: document.getElementById('gameArea')
+        };
 
-function makeBubble() {
-    var clutter = "";
-
-    for (var i = 1; i <= 102; i++) {
-        var rn = Math.floor(Math.random() * 10);
-        clutter += `<div class="bubble">${rn}</div>`;
+        this.init();
     }
 
-    document.getElementById("pbtm").innerHTML = clutter;
-}
-
-function setTimer() {
-    document.getElementById("timerVal").textContent = timer;
-    var timerInt = setInterval(function () {
-        if (timer > 0) {
-            timer--;
-            document.getElementById("timerVal").textContent = timer;
-        }
-        else {
-            clearInterval(timerInt);
-            document.querySelector("#pbtm").innerHTML = `<h1>Game is over</h1>`;
-        }
-    }, 1000);
-}
-
-function increaseScore() {
-    score += 10;
-    document.getElementById("scoreVal").textContent = score;
-}
-
-document.getElementById("pbtm").addEventListener('click', function (details) {
-    var clickeNum = Number(details.target.textContent);
-    if (clickeNum === hitrn) {
-        increaseScore();
-        makeBubble();
-        getNewHit();
+    init() {
+        this.generateTarget();
+        this.createBubbles();
+        this.startTimer();
+        this.addEventListeners();
     }
-})
 
-makeBubble()
-setTimer()
-getNewHit()
+    generateTarget() {
+        this.target = Math.floor(Math.random() * 10);
+        this.elements.target.textContent = this.target;
+    }
+
+    createBubbles() {
+        const bubbleCount = 63;
+        let bubblesHTML = '';
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const number = Math.floor(Math.random() * 10);
+            bubblesHTML += `<div class="bubble" data-number="${number}" style="--i: ${i}">${number}</div>`;
+        }
+
+        this.elements.gameArea.innerHTML = bubblesHTML;
+    }
+
+    startTimer() {
+        this.updateTimer();
+        this.timerInterval = setInterval(() => {
+            this.timer--;
+            this.updateTimer();
+
+            if (this.timer <= 0) {
+                this.endGame();
+            }
+        }, 1000);
+    }
+
+    updateTimer() {
+        this.elements.timer.textContent = this.timer;
+        if (this.timer <= 10) {
+            this.elements.timer.style.background = 'rgba(255, 82, 82, 0.4)';
+            this.elements.timer.style.animation = 'urgentPulse 0.5s infinite';
+            this.elements.timer.style.borderColor = '#fc8181';
+        } else {
+            this.elements.timer.style.background = 'rgba(255, 255, 255, 0.25)';
+            this.elements.timer.style.animation = 'statPulse 2s ease-in-out infinite';
+            this.elements.timer.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        }
+    }
+
+    addEventListeners() {
+        this.elements.gameArea.addEventListener('click', (e) => {
+            if (!this.gameActive || !e.target.classList.contains('bubble')) return;
+
+            const clickedNumber = parseInt(e.target.dataset.number);
+
+            if (clickedNumber === this.target) {
+                this.handleCorrectClick(e.target);
+            }
+        });
+    }
+
+    handleCorrectClick(bubble) {
+        bubble.classList.add('correct');
+        this.score += 10;
+        this.elements.score.textContent = this.score;
+
+        setTimeout(() => {
+            this.generateTarget();
+            this.createBubbles();
+        }, 200);
+    }
+
+    endGame() {
+        this.gameActive = false;
+        clearInterval(this.timerInterval);
+
+        this.elements.gameArea.innerHTML = `
+                    <div class="game-over">
+                        <h1>🎯 Game Over!</h1>
+                        <div class="final-score">Final Score: ${this.score}</div>
+                        <button class="restart-btn" onclick="location.reload()">Play Again</button>
+                    </div>
+                `;
+    }
+}
+new BubbleGame();
