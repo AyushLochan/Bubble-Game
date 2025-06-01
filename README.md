@@ -60,7 +60,3 @@ Want to run the game locally? Follow these simple steps:
 4. The faster you react, the higher your score!
 
 Enjoy popping! 🎉
-
----
-
-Let me know if you'd like a version tailored for a GitHub Pages portfolio or documentation site.
