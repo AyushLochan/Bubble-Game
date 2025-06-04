@@ -4,7 +4,7 @@
 
 **Bubble Game** is a fun and interactive web-based game where players test their reflexes by popping bubbles that appear on the screen. Designed for players of all ages, it combines fast-paced gameplay with a clean, responsive interface.
 
-### 🔗 [Play Now]
+### 🔗 [Play Now](https://ayushlochan.github.io/Bubble-Game/)
 
 ---
 
