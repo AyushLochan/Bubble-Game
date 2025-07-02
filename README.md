@@ -60,9 +60,3 @@ To run the game locally on your machine:
 4. The quicker you react, the higher your score!
 
 ⚡ Challenge yourself, improve your reflexes, and have fun popping bubbles!
-
----
-
-## 📬 Feedback & Contributions
-
-Got suggestions or want to contribute? Feel free to [open an issue](https://github.com/AyushLochan/Bubble-Game/issues) or submit a pull request!
