@@ -66,7 +66,3 @@ To run the game locally on your machine:
 ## 📬 Feedback & Contributions
 
 Got suggestions or want to contribute? Feel free to [open an issue](https://github.com/AyushLochan/Bubble-Game/issues) or submit a pull request!
-
----
-
-Enjoy the game? Give it a ⭐ on [GitHub](https://github.com/AyushLochan/Bubble-Game)!
